@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+a	main.c	/^    int a;$/;"	m	struct:node1	file:
+b	main.c	/^    int b;$/;"	m	struct:node1	file:
+c	main.c	/^    int c;$/;"	m	struct:node1	file:
+d	fun.c	/^    int d;$/;"	m	struct:fun_node1	file:
+e	fun.c	/^    int e;$/;"	m	struct:fun_node1	file:
+f	fun.c	/^    int f;$/;"	m	struct:fun_node1	file:
+fun_node1	fun.c	/^struct fun_node1$/;"	s	file:
+node1	main.c	/^struct node1$/;"	s	file:
+node2	main.c	/^struct node2$/;"	s	file:
+num1	main.c	/^    int num1;$/;"	m	struct:node2	file:
+num2	main.c	/^    int num2;$/;"	m	struct:node2	file:
+num3	main.c	/^    int num3;$/;"	m	struct:node2	file:

@@ -11,8 +11,9 @@ TYPE_INDEX = 2
 STRUCT_INDEX = 3
 
 sourceFile = "tags"
-tmpFile = "~/work/tmp/dotout/tmp.dot"
+tmpFile = "../test/outdir/tmp.dot"
 graphHead = "digraph {\n\trankdir=LR;\n\t" 
+
 commandList = ["ctags --version", "dot -V"]
 
 def checkEvn():
@@ -33,6 +34,8 @@ def readFile(path = ""):
     if path == "":
         print "NUll path, exit"
         return NULL
+
+    print path
     pf = open(path)
     p = re.compile('\/\^.*\$\/;"')
     lines = {}
@@ -104,7 +107,7 @@ def createDot(hashNode):
         graph_data = graph_data[:-1] + "}"
         pf.write(graph_data)
         pf.close()
-        command = "dot -Tjpg tmp.dot -o ~/work/tmp/dotout/" + file_key[:-2]
+        command = "dot -Tjpg tmp.dot -o ../test/outdir/" + file_key[:-2]
         os.system(command)
         os.system("rm tmp.dot -rf")
     return
@@ -112,7 +115,11 @@ def createDot(hashNode):
 if __name__ == "__main__":
     if checkEvn() == False:
        sys.exit(0)
-    ret = readFile("tags")
+
+    if len(sys.argv) == 2:
+        sourceFile = sys.argv[-1]
+
+    ret = readFile(sourceFile)
     hashNode = buildNode(ret)
     createDot(hashNode)
 
