@@ -14,12 +14,15 @@ d	fun.c	/^    int d;$/;"	m	struct:fun_node1	file:
 e	fun.c	/^    int e;$/;"	m	struct:fun_node1	file:
 f	fun.c	/^    int f;$/;"	m	struct:fun_node1	file:
 fun_node1	fun.c	/^struct fun_node1$/;"	s	file:
+fun_node2	fun.c	/^struct fun_node2$/;"	s	file:
 mem1	main.c	/^    struct node1 mem1;$/;"	m	struct:node3	typeref:struct:node3::node1	file:
 mem2	main.c	/^    struct node1 mem2;$/;"	m	struct:node3	typeref:struct:node3::node1	file:
 mem3	main.c	/^    int mem3;$/;"	m	struct:node3	file:
 mem4	main.c	/^    int mem4;$/;"	m	struct:node3	file:
 mem5	main.c	/^    char mem5;$/;"	m	struct:node3	file:
+node1	fun.c	/^    struct node node1;$/;"	m	struct:fun_node2	typeref:struct:fun_node2::node	file:
 node1	main.c	/^struct node1$/;"	s	file:
+node2	fun.c	/^    struct node node2;$/;"	m	struct:fun_node2	typeref:struct:fun_node2::node	file:
 node2	main.c	/^struct node2$/;"	s	file:
 node3	main.c	/^struct node3$/;"	s	file:
 num1	main.c	/^    int num1;$/;"	m	struct:node2	file:

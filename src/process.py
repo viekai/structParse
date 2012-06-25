@@ -54,7 +54,6 @@ def readFile(path = ""):
 
         line =  p.sub("", line)
         line = line[:-1] + " $$" + name + "$$"
-      #  print line
         word = line.split()
         regex = ur"^.*\.[cChH]$"
 
@@ -65,7 +64,6 @@ def readFile(path = ""):
             lines[word[FILE_INDEX]] = []
 
         lines[word[FILE_INDEX]].append(line)
-
     pf.close()
 
     return lines 
@@ -105,20 +103,39 @@ def createDot(hashNode):
         graph_data = graphHead
         for node_key in node.keys():
             member = node[node_key]
-            graph_data = graph_data + node_key + "[shape=record, label=\"" + "#" + node_key + "|"
-            i = 0 
+            graph_data = graph_data + node_key + "[shape=record, label=\"<v0>" + "#" + node_key + "|"
+            i = 1 
             for mem in member:
                label = "<v" + str(i) + ">"
                i = i + 1
                graph_data = graph_data + label + mem + "|";
+               names = mem.split()
+               if names[0] == "struct":
+                   print names
+                   
             graph_data = graph_data[:-1] + "\"" + "];\n\t"
+
+        for node_key in node.keys():
+            member = node[node_key]
+            i = 1 
+            for mem in member:
+                names = mem.split()
+                if names[0] == "struct":
+                    if names[1] in node.keys():
+                        data = node_key + ":" + "v" + str(i) + "->" + names[1] + ":v0:n;\n\t"
+                    else:
+                        print "Waring: struct " + names[1] + "not find!" 
+                        continue
+                    graph_data = graph_data + data
+                i = i + 1
+                
 
         graph_data = graph_data[:-1] + "}"
         pf.write(graph_data)
         pf.close()
         command = "dot -Tjpg tmp.dot -o ../test/outdir/" + file_key[:-2]
         os.system(command)
-        os.system("rm tmp.dot -rf")
+       # os.system("rm tmp.dot -rf")
     return
 
 if __name__ == "__main__":
