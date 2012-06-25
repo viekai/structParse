@@ -1,0 +1,8 @@
+digraph {
+	rankdir=LR;
+	node1[shape=record, label="<v0>#node1|<v1>int a|<v2>int b|<v3>int c"];
+	node3[shape=record, label="<v0>#node3|<v1>struct node1 mem1|<v2>struct node1 mem2|<v3>int mem3|<v4>int mem4|<v5>char mem5"];
+	node2[shape=record, label="<v0>#node2|<v1>int num1|<v2>int num2|<v3>int num3"];
+	node3:v1->node1:v0:n;
+	node3:v2->node1:v0:n;
+}

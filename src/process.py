@@ -124,7 +124,7 @@ def createDot(hashNode):
                     if names[1] in node.keys():
                         data = node_key + ":" + "v" + str(i) + "->" + names[1] + ":v0:n;\n\t"
                     else:
-                        print "Waring: struct " + names[1] + "not find!" 
+                        print "Waring: struct " + names[1] + " not find!" 
                         continue
                     graph_data = graph_data + data
                 i = i + 1
