@@ -5,6 +5,7 @@ import os
 import commands
 import sys
 # index for record
+#INT_INDEX = 0
 NAME_INDEX = 0
 FILE_INDEX = 1
 TYPE_INDEX = 2
@@ -34,20 +35,37 @@ def readFile(path = ""):
     if path == "":
         print "NUll path, exit"
         return NULL
-
-    print path
     pf = open(path)
-    p = re.compile('\/\^.*\$\/;"')
+    p = re.compile('\/\^ *(.*)\$\/;\"')
     lines = {}
     for line in pf.readlines():
+        if line[0] == '!':
+            continue
+        pos = p.search(line)
+
+        if pos == None:
+            pass
+        else:
+            m = p.match(line, pos.start())
+        name = m.group(1)
+
+        if name[-1] == ';':
+            name = name[:-1]
+
         line =  p.sub("", line)
+        line = line[:-1] + " $$" + name + "$$"
+      #  print line
         word = line.split()
         regex = ur"^.*\.[cChH]$"
+
         if word[FILE_INDEX][0] == "!" or re.search(regex, word[FILE_INDEX]) == None:
             continue
+
         if lines.has_key(word[FILE_INDEX]) == False:
             lines[word[FILE_INDEX]] = []
+
         lines[word[FILE_INDEX]].append(line)
+
     pf.close()
 
     return lines 
@@ -55,19 +73,7 @@ def readFile(path = ""):
 
 def buildNode(lines):
     hashNode = {}
-
-    if 0:
-        for flist in lines.keys():
-            if hashNode.has_key(flist) == False:
-                hashNode[flist] = {}
-            for line in lines[flist]:
-                words = line.split()
-                fileName = words[FILE_INDEX]
-                fileType = words[TYPE_INDEX]
-                valueName = words[NAME_INDEX]
-                if fileType == "s":
-                    hashNode[fileName][valueName] = [];
-
+    p = re.compile('\$\$(.*)\$\$')
     for flist in lines.keys():
         if hashNode.has_key(flist) == False:
             hashNode[flist] = {}
@@ -77,6 +83,9 @@ def buildNode(lines):
             fileType = words[TYPE_INDEX]
             valueName = words[NAME_INDEX]
             if fileType == "m":
+                pos = p.search(line)
+                m = p.match(line, pos.start())
+                valueName = m.group(1)
                 nodeName = words[STRUCT_INDEX][7:]
                 if hashNode[fileName].has_key(nodeName) == False:
                     hashNode[fileName][nodeName] = []

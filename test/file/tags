@@ -4,6 +4,9 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ONE	main.c	/^    ONE = 0;$/;"	e	enum:__anon1	file:
+THREE	main.c	/^    THREE;$/;"	e	enum:__anon1	file:
+TWO	main.c	/^    TWO ;$/;"	e	enum:__anon1	file:
 a	main.c	/^    int a;$/;"	m	struct:node1	file:
 b	main.c	/^    int b;$/;"	m	struct:node1	file:
 c	main.c	/^    int c;$/;"	m	struct:node1	file:
@@ -11,8 +14,14 @@ d	fun.c	/^    int d;$/;"	m	struct:fun_node1	file:
 e	fun.c	/^    int e;$/;"	m	struct:fun_node1	file:
 f	fun.c	/^    int f;$/;"	m	struct:fun_node1	file:
 fun_node1	fun.c	/^struct fun_node1$/;"	s	file:
+mem1	main.c	/^    struct node1 mem1;$/;"	m	struct:node3	typeref:struct:node3::node1	file:
+mem2	main.c	/^    struct node1 mem2;$/;"	m	struct:node3	typeref:struct:node3::node1	file:
+mem3	main.c	/^    int mem3;$/;"	m	struct:node3	file:
+mem4	main.c	/^    int mem4;$/;"	m	struct:node3	file:
+mem5	main.c	/^    char mem5;$/;"	m	struct:node3	file:
 node1	main.c	/^struct node1$/;"	s	file:
 node2	main.c	/^struct node2$/;"	s	file:
+node3	main.c	/^struct node3$/;"	s	file:
 num1	main.c	/^    int num1;$/;"	m	struct:node2	file:
 num2	main.c	/^    int num2;$/;"	m	struct:node2	file:
 num3	main.c	/^    int num3;$/;"	m	struct:node2	file:
