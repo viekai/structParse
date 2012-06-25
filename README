@@ -1,1 +1,22 @@
 # It is used to parse struct with the help of ctags and graphviz
+
+目录说明：
+    src: 源代码目录，为一个process.py，执行该文件
+    test/file: 包含了两个测试用的.c文件，和tags文件
+    test/outdir: 生成的图片
+
+
+step 1:
+    sudo apt-get install ctags
+    sudo apt-get install graphviz
+    以确保系统中有ctags和graphviz
+    
+    在有c文件或者.h文件中用ctags -R生成tags文件
+
+step 2:
+    ./process.py  $PATH/tags 
+    $PATH为tags所在目录
+
+step 3:
+    在test/outdir中会有生成的文件
+
